@@ -12,7 +12,7 @@
     "start": "node dist/server.js",
     "dev": "tsx --watch src/server.ts",
     "lint": "eslint 'src/**/*.ts'",
-    "introspect-db": "drizzle-kit introspect:pg --out=migrations/"
+    "introspect-db": "drizzle-kit pull --config=drizzle-introspect.config.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",

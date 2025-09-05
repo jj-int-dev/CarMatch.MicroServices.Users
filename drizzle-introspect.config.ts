@@ -3,11 +3,10 @@ import { defineConfig } from 'drizzle-kit';
 
 export default defineConfig({
   out: './src/database-migrations',
-  schema: './src/database-migrations/schema.ts',
   dialect: 'postgresql',
   schemaFilter: ['public', 'auth'],
   dbCredentials: {
-    url: config.DATABASE_URL
+    url: config.DATABASE_INTROSPECT_URL
   },
   verbose: true
 });
