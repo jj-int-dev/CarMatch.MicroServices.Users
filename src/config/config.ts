@@ -9,6 +9,7 @@ interface Config {
   SUPABASE_PUBLISHABLE_KEY: string;
   DATABASE_URL: string;
   DATABASE_INTROSPECT_URL: string;
+  AUTHORIZED_CALLER: string;
 }
 
 const config: Config = {
@@ -17,7 +18,8 @@ const config: Config = {
   SUPABASE_URL: process.env.SUPABASE_URL!,
   SUPABASE_PUBLISHABLE_KEY: process.env.SUPABASE_PUBLISHABLE_KEY!,
   DATABASE_URL: process.env.DATABASE_URL!,
-  DATABASE_INTROSPECT_URL: process.env.DATABASE_INTROSPECT_URL!
+  DATABASE_INTROSPECT_URL: process.env.DATABASE_INTROSPECT_URL!,
+  AUTHORIZED_CALLER: process.env.AUTHORIZED_CALLER!
 };
 
 export default config;
