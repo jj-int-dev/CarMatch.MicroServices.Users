@@ -1,6 +1,6 @@
-if (process.env.NODE_ENV !== 'production') {
-  require('dotenv').config({ path: '../../.env' });
-}
+import dotenv from 'dotenv';
+
+dotenv.config({ path: '../../.env' });
 
 interface Config {
   PORT: number;
