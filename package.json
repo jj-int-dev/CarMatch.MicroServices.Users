@@ -37,6 +37,7 @@
     "@types/cors": "^2.8.19",
     "cors": "^2.8.5",
     "drizzle-orm": "^0.44.5",
-    "postgres": "^3.4.7"
+    "postgres": "^3.4.7",
+    "zod": "^4.1.5"
   }
 }
