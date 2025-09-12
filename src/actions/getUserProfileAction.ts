@@ -1,8 +1,10 @@
 import getUserProfileCommand from '../commands/getUserProfileCommand';
+import userProfileSchemaToUserProfile from '../mappers/userProfileSchemaToUserProfile';
 import {
   userProfileValidator,
   type UserProfileSchema
 } from '../validators/database/userProfileValidator';
+import type { UserProfile } from '../dataTypes/userProfile';
 
 /**
  *
@@ -10,18 +12,18 @@ import {
  * @returns The profile data
  * @throws {Error} When no user data was returned from the database
  */
-export default async function (userId: string) {
+export default async function (userId: string): Promise<UserProfile> {
   console.log('Entering GetUserProfileAction ...');
   const profileResponse = userProfileValidator.safeParse(
     await getUserProfileCommand(userId)
   );
   if (profileResponse.success) {
     const userProfile: UserProfileSchema = profileResponse.data;
+    const profileDetails = userProfileSchemaToUserProfile(userProfile);
     console.log(
-      `Successfully retrieved profile for user with userId ${userId}`
+      `Successfully retrieved profile for user with userId ${userId}. Exiting GetUserProfilePictureAction ...`
     );
-    console.log('Exiting GetUserProfilePictureAction ...');
-    return userProfile;
+    return profileDetails;
   }
   const {
     error: { message }

@@ -6,6 +6,32 @@ import getUserProfileAction from '../actions/getUserProfileAction';
 
 const router = Router();
 
+/**
+ * @openapi
+ * /api/users/{userId}/profile-picture:
+ *   get:
+ *     summary: Get User Profile Picture URL
+ *     description: Retrieves the profile picture URL for a given user ID.
+ *     parameters:
+ *       - in: path
+ *     responses:
+ *       200:
+ *         description: A user's profile picture URL.
+ *         content: application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               avatarUrl:
+ *                 type: string
+ *       500:
+ *         description: Server error or invalid user ID.
+ *         content: application/json:
+ *         schema:
+ *           type: object
+ *           properties:
+ *             error:
+ *               type: string
+ */
 router.get(
   '/:userId/profile-picture',
   /*isAuthorized,*/
@@ -22,6 +48,47 @@ router.get(
   }
 );
 
+/**
+ * @openapi
+ * /api/users/{userId}:
+ *   get:
+ *     summary: Get User Profile Picture Details
+ *     description: Retrieves the profile details for a given user ID.
+ *     parameters:
+ *       - in: path
+ *     responses:
+ *       200:
+ *         description: A user's profile details.
+ *         content: application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               userProfile:
+ *                 type: object
+ *                 properties:
+ *                   email:
+ *                     type: string
+ *                   displayName:
+ *                     type: string
+ *                   phoneNumber:
+ *                     type: string
+ *                   gender:
+ *                     type: string
+ *                   bio:
+ *                     type: string
+ *                   avatarUrl:
+ *                     type: string
+ *                   userType:
+ *                     type: string
+ *       500:
+ *         description: Server error or invalid user ID.
+ *         content: application/json:
+ *         schema:
+ *           type: object
+ *           properties:
+ *             error:
+ *               type: string
+ */
 router.get(
   '/:userId',
   /*isAuthorized,*/

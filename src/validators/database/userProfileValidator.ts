@@ -7,7 +7,7 @@ export const userProfileValidator = z.object({
   gender: z.string().optional(),
   bio: z.string().optional(),
   avatarurl: z.string().optional(),
-  userTypeId: z.number().optional()
+  type: z.string().optional()
 });
 
 export type UserProfileSchema = z.infer<typeof userProfileValidator>;

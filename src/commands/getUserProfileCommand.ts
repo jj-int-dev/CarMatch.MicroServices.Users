@@ -15,8 +15,12 @@ export default async function (userId: string) {
       phoneNumber: true,
       gender: true,
       bio: true,
-      avatarurl: true,
-      userTypeId: true
+      avatarurl: true
+    },
+    with: {
+      userTypes: {
+        columns: { type: true }
+      }
     },
     where: eq(users.userId, userId)
   });
