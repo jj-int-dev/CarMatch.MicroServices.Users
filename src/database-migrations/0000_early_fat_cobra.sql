@@ -257,7 +257,7 @@ CREATE TABLE "users" (
 	"display_name" varchar(300),
 	"created_at" timestamp with time zone NOT NULL,
 	"date_of_birth" date NOT NULL,
-	"avatarurl" text,
+	"avatarUrl" text,
 	"bio" text,
 	"user_type_id" integer,
 	"gender" varchar,

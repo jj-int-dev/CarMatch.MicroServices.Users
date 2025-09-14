@@ -21,18 +21,20 @@ const corsOptions: cors.CorsOptions = {
   credentials: true // Allow sending cookies/authorization headers
 };
 
-const app = express();
 const swaggerSpec = swaggerJSDoc(swaggerOptions);
+const app = express();
 
 app.use(express.json());
 app.use(cors(corsOptions));
+
+// Routes
+app.use('/api/users', userRoutes);
+
+// Swagger
 app.use(
   '/api-docs',
   swaggerUi.serve,
   swaggerUi.setup(swaggerSpec, { explorer: true })
 );
-
-// Routes
-app.use('/api/users', userRoutes);
 
 export default app;

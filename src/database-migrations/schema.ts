@@ -688,7 +688,7 @@ export const users = pgTable(
       mode: 'string'
     }).notNull(),
     dateOfBirth: date('date_of_birth').notNull(),
-    avatarurl: text(),
+    avatarUrl: text('avatar_url'),
     bio: text(),
     userTypeId: integer('user_type_id'),
     gender: varchar(),

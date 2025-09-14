@@ -1,13 +1,15 @@
 import * as z from 'zod';
 
-export const userProfileValidator = z.object({
-  email: z.email(),
-  displayName: z.string().optional(),
-  phoneNumber: z.string().optional(),
-  gender: z.string().optional(),
-  bio: z.string().optional(),
-  avatarurl: z.string().optional(),
-  type: z.string().optional()
-});
+export const userProfileValidator = z
+  .object({
+    email: z.email(),
+    displayName: z.string().nullable(),
+    phoneNumber: z.string().nullable(),
+    gender: z.string().nullable(),
+    bio: z.string().nullable(),
+    avatarUrl: z.string().nullable(),
+    usertype: z.object({ type: z.string() }).optional()
+  })
+  .optional();
 
 export type UserProfileSchema = z.infer<typeof userProfileValidator>;

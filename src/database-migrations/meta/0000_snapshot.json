@@ -213,12 +213,8 @@
           "tableFrom": "sso_domains",
           "tableTo": "sso_providers",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "sso_provider_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["sso_provider_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -317,12 +313,8 @@
           "tableFrom": "saml_providers",
           "tableTo": "sso_providers",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "sso_provider_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["sso_provider_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -662,12 +654,8 @@
           "tableFrom": "mfa_factors",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -839,12 +827,8 @@
           "tableFrom": "refresh_tokens",
           "tableTo": "sessions",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "session_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["session_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1423,12 +1407,8 @@
           "tableFrom": "saml_relay_states",
           "tableTo": "flow_state",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "flow_state_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["flow_state_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -1437,12 +1417,8 @@
           "tableFrom": "saml_relay_states",
           "tableTo": "sso_providers",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "sso_provider_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["sso_provider_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1593,12 +1569,8 @@
           "tableFrom": "sessions",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1651,12 +1623,8 @@
           "tableFrom": "mfa_amr_claims",
           "tableTo": "sessions",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "session_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["session_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -1913,12 +1881,8 @@
           "tableFrom": "identities",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2042,12 +2006,8 @@
           "tableFrom": "one_time_tokens",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2134,12 +2094,8 @@
           "tableFrom": "mfa_challenges",
           "tableTo": "mfa_factors",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "factor_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["factor_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2221,8 +2177,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "avatarurl": {
-          "name": "avatarurl",
+        "avatar_url": {
+          "name": "avatar_url",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -2260,12 +2216,8 @@
           "tableFrom": "users",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -2274,12 +2226,8 @@
           "tableFrom": "users",
           "tableTo": "usertypes",
           "schemaTo": "public",
-          "columnsFrom": [
-            "user_type_id"
-          ],
-          "columnsTo": [
-            "user_type_id"
-          ],
+          "columnsFrom": ["user_type_id"],
+          "columnsTo": ["user_type_id"],
           "onDelete": "set null",
           "onUpdate": "cascade"
         }
@@ -2332,12 +2280,8 @@
           "tableFrom": "messages",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "sender_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["sender_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -2346,12 +2290,8 @@
           "tableFrom": "messages",
           "tableTo": "conversations",
           "schemaTo": "public",
-          "columnsFrom": [
-            "conversation_id"
-          ],
-          "columnsTo": [
-            "conversation_id"
-          ],
+          "columnsFrom": ["conversation_id"],
+          "columnsTo": ["conversation_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2428,12 +2368,8 @@
           "tableFrom": "conversations",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "adopter_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["adopter_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -2442,12 +2378,8 @@
           "tableFrom": "conversations",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "rehomer_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["rehomer_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2488,12 +2420,8 @@
           "tableFrom": "animal_photos",
           "tableTo": "animals",
           "schemaTo": "public",
-          "columnsFrom": [
-            "animal_id"
-          ],
-          "columnsTo": [
-            "animal_id"
-          ],
+          "columnsFrom": ["animal_id"],
+          "columnsTo": ["animal_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2546,12 +2474,8 @@
           "tableFrom": "swipes",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "potential_adopter_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["potential_adopter_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -2560,12 +2484,8 @@
           "tableFrom": "swipes",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "rehomer_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["rehomer_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -2574,12 +2494,8 @@
           "tableFrom": "swipes",
           "tableTo": "animals",
           "schemaTo": "public",
-          "columnsFrom": [
-            "animal_id"
-          ],
-          "columnsTo": [
-            "animal_id"
-          ],
+          "columnsFrom": ["animal_id"],
+          "columnsTo": ["animal_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2639,12 +2555,8 @@
           "tableFrom": "user_search_preferences",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2652,9 +2564,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
         "user_search_preferences_user_id_key": {
-          "columns": [
-            "user_id"
-          ],
+          "columns": ["user_id"],
           "nullsNotDistinct": false,
           "name": "user_search_preferences_user_id_key"
         }
@@ -2712,12 +2622,8 @@
           "tableFrom": "notifications",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "target_user_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["target_user_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2775,12 +2681,8 @@
           "tableFrom": "animals_adopted",
           "tableTo": "animals",
           "schemaTo": "public",
-          "columnsFrom": [
-            "animal_id"
-          ],
-          "columnsTo": [
-            "animal_id"
-          ],
+          "columnsFrom": ["animal_id"],
+          "columnsTo": ["animal_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -2789,12 +2691,8 @@
           "tableFrom": "animals_adopted",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "rehomer_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["rehomer_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2921,12 +2819,8 @@
           "tableFrom": "animals",
           "tableTo": "users",
           "schemaTo": "public",
-          "columnsFrom": [
-            "rehomer_id"
-          ],
-          "columnsTo": [
-            "user_id"
-          ],
+          "columnsFrom": ["rehomer_id"],
+          "columnsTo": ["user_id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2941,44 +2835,27 @@
   "enums": {
     "auth.aal_level": {
       "name": "aal_level",
-      "values": [
-        "aal1",
-        "aal2",
-        "aal3"
-      ],
+      "values": ["aal1", "aal2", "aal3"],
       "schema": "auth"
     },
     "auth.code_challenge_method": {
       "name": "code_challenge_method",
-      "values": [
-        "s256",
-        "plain"
-      ],
+      "values": ["s256", "plain"],
       "schema": "auth"
     },
     "auth.factor_status": {
       "name": "factor_status",
-      "values": [
-        "unverified",
-        "verified"
-      ],
+      "values": ["unverified", "verified"],
       "schema": "auth"
     },
     "auth.factor_type": {
       "name": "factor_type",
-      "values": [
-        "totp",
-        "webauthn",
-        "phone"
-      ],
+      "values": ["totp", "webauthn", "phone"],
       "schema": "auth"
     },
     "auth.oauth_registration_type": {
       "name": "oauth_registration_type",
-      "values": [
-        "dynamic",
-        "manual"
-      ],
+      "values": ["dynamic", "manual"],
       "schema": "auth"
     },
     "auth.one_time_token_type": {

@@ -1,5 +1,4 @@
 import getUserProfilePictureCommand from '../commands/getUserProfilePictureCommand';
-import { userProfileUrlValidator } from '../validators/database/userProfileUrlValidator';
 
 /**
  *
@@ -9,22 +8,19 @@ import { userProfileUrlValidator } from '../validators/database/userProfileUrlVa
  */
 export default async function (userId: string) {
   console.log('Entering GetUserProfilePictureAction ...');
-  const urlResponse = userProfileUrlValidator.safeParse(
-    await getUserProfilePictureCommand(userId)
-  );
-  if (urlResponse.success) {
-    const { avatarurl } = urlResponse.data;
+  const { success, data, error } = await getUserProfilePictureCommand(userId);
+
+  if (success && data) {
+    const { avatarUrl } = data;
     console.log(
-      `Successfully retrieved profile url for user with userId ${userId}: ${avatarurl}`
+      `Successfully retrieved profile url for user with userId ${userId}: ${avatarUrl}` +
+        `\nExiting GetUserProfilePictureAction ...`
     );
-    console.log('Exiting GetUserProfilePictureAction ...');
-    return avatarurl;
+    return avatarUrl;
   }
-  const {
-    error: { message }
-  } = urlResponse;
-  console.error(
-    `Could not find the profile url for user ${userId}: ${message}`
-  );
-  throw new Error(message);
+
+  const errorMsg = `Could not find the profile picture for user ${userId}`;
+  const moreDetails = error?.message ? `: ${error.message}` : '';
+  console.error(`${errorMsg}${moreDetails}`);
+  throw new Error(errorMsg);
 }

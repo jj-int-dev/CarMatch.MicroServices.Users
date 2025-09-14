@@ -1,10 +1,6 @@
 import getUserProfileCommand from '../commands/getUserProfileCommand';
 import userProfileSchemaToUserProfile from '../mappers/userProfileSchemaToUserProfile';
-import {
-  userProfileValidator,
-  type UserProfileSchema
-} from '../validators/database/userProfileValidator';
-import type { UserProfile } from '../dataTypes/userProfile';
+import type { UserProfile } from '../dtos/userProfile';
 
 /**
  *
@@ -14,20 +10,18 @@ import type { UserProfile } from '../dataTypes/userProfile';
  */
 export default async function (userId: string): Promise<UserProfile> {
   console.log('Entering GetUserProfileAction ...');
-  const profileResponse = userProfileValidator.safeParse(
-    await getUserProfileCommand(userId)
-  );
-  if (profileResponse.success) {
-    const userProfile: UserProfileSchema = profileResponse.data;
-    const profileDetails = userProfileSchemaToUserProfile(userProfile);
+  const { success, data, error } = await getUserProfileCommand(userId);
+
+  if (success && data) {
+    const profileDetails = userProfileSchemaToUserProfile(data);
     console.log(
-      `Successfully retrieved profile for user with userId ${userId}. Exiting GetUserProfilePictureAction ...`
+      `Successfully retrieved profile for user with userId ${userId}\nExiting GetUserProfilePictureAction ...`
     );
     return profileDetails;
   }
-  const {
-    error: { message }
-  } = profileResponse;
-  console.error(`Could not find the profile for user ${userId}: ${message}`);
-  throw new Error(message);
+
+  const errorMsg = `Could not find the profile for user ${userId}`;
+  const moreDetails = error?.message ? `: ${error.message}` : '';
+  console.error(`${errorMsg}${moreDetails}`);
+  throw new Error(errorMsg);
 }
