@@ -1,8 +1,18 @@
 import { Router, type Request, type Response } from 'express';
-import isAuthorized from '../utils/isAuthorized';
+import isAuthorized from '../validators/requests/isAuthorized';
 import userIdValidator from '../validators/requests/userIdValidator';
 import getUserProfilePictureAction from '../actions/getUserProfilePictureAction';
 import getUserProfileAction from '../actions/getUserProfileAction';
+import userCanMakeUserUpdatesValidator from '../validators/requests/userCanMakeUserUpdatesValidator';
+import userProfilePictureValidator from '../validators/requests/userProfilePictureValidator';
+import {
+  type UserProfileDataSchema,
+  userProfileDataValidator
+} from '../validators/requests/userProfileDataValidator';
+import { userTypeValidator } from '../validators/requests/userTypeValidator';
+import updateUserProfileAction from '../actions/updateUserProfileAction';
+import updateUserTypeAction from '../actions/updateUserTypeAction';
+import getErrorResponseJson from '../utils/getErrorResponseJson';
 
 const router = Router();
 
@@ -48,14 +58,14 @@ router.get(
       const avatarUrl = await getUserProfilePictureAction(req.params.userId!);
       return res.status(200).json({ avatarUrl });
     } catch (error) {
-      return res.status(500).json({ error: (error as Error).message });
+      return getErrorResponseJson(error, res);
     }
   }
 );
 
 /**
  * @swagger
- * /api/users/{userId}:
+ * /api/users/{userId}/profile:
  *   get:
  *     summary: Get User Profile Details
  *     description: Retrieves the profile details for a given user ID.
@@ -102,7 +112,7 @@ router.get(
  *                   type: string
  */
 router.get(
-  '/:userId',
+  '/:userId/profile',
   /*isAuthorized,*/
   userIdValidator,
   async (req: Request, res: Response) => {
@@ -110,7 +120,47 @@ router.get(
       const userProfile = await getUserProfileAction(req.params.userId!);
       return res.status(200).json({ userProfile });
     } catch (error) {
-      return res.status(500).json({ error: (error as Error).message });
+      return getErrorResponseJson(error, res);
+    }
+  }
+);
+
+router.patch(
+  ':userId/profile',
+  isAuthorized,
+  userIdValidator,
+  userCanMakeUserUpdatesValidator,
+  userProfilePictureValidator,
+  userProfileDataValidator,
+  async (req: Request, res: Response) => {
+    try {
+      const updatedUserProfile = await updateUserProfileAction(
+        req.params.id!,
+        req.file,
+        req.body as UserProfileDataSchema
+      );
+      return res.status(200).json({ userProfile: updatedUserProfile });
+    } catch (error) {
+      return getErrorResponseJson(error, res);
+    }
+  }
+);
+
+router.patch(
+  ':userId/user-type',
+  isAuthorized,
+  userIdValidator,
+  userCanMakeUserUpdatesValidator,
+  userTypeValidator,
+  async (req: Request, res: Response) => {
+    try {
+      const updatedUserType = await updateUserTypeAction(
+        req.params.userId!,
+        req.body.userType as string
+      );
+      return res.status(200).json({ userType: updatedUserType });
+    } catch (error) {
+      return getErrorResponseJson(error, res);
     }
   }
 );

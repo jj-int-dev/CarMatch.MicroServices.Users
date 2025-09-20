@@ -1,4 +1,5 @@
 import getUserProfilePictureCommand from '../commands/getUserProfilePictureCommand';
+import HttpResponseError from '../dtos/httpResponseError';
 
 /**
  *
@@ -6,7 +7,7 @@ import getUserProfilePictureCommand from '../commands/getUserProfilePictureComma
  * @returns The profile picture url
  * @throws {Error} When a valid image url has not been returned from the database
  */
-export default async function (userId: string) {
+export default async function (userId: string): Promise<string> {
   console.log('Entering GetUserProfilePictureAction ...');
   const { success, data, error } = await getUserProfilePictureCommand(userId);
 
@@ -22,5 +23,5 @@ export default async function (userId: string) {
   const errorMsg = `Could not find the profile picture for user ${userId}`;
   const moreDetails = error?.message ? `: ${error.message}` : '';
   console.error(`${errorMsg}${moreDetails}`);
-  throw new Error(errorMsg);
+  throw new HttpResponseError(500, errorMsg);
 }

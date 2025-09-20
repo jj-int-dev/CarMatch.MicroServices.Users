@@ -1,6 +1,7 @@
 import getUserProfileCommand from '../commands/getUserProfileCommand';
 import userProfileSchemaToUserProfile from '../mappers/userProfileSchemaToUserProfile';
 import type { UserProfile } from '../dtos/userProfile';
+import HttpResponseError from '../dtos/httpResponseError';
 
 /**
  *
@@ -23,5 +24,5 @@ export default async function (userId: string): Promise<UserProfile> {
   const errorMsg = `Could not find the profile for user ${userId}`;
   const moreDetails = error?.message ? `: ${error.message}` : '';
   console.error(`${errorMsg}${moreDetails}`);
-  throw new Error(errorMsg);
+  throw new HttpResponseError(500, errorMsg);
 }

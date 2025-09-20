@@ -670,7 +670,7 @@ export const mfaChallengesInAuth = auth.table(
   ]
 );
 
-export const usertypes = pgTable('usertypes', {
+export const userTypes = pgTable('usertypes', {
   userTypeId: serial('user_type_id').primaryKey().notNull(),
   type: varchar({ length: 100 }).notNull()
 });
@@ -704,7 +704,7 @@ export const users = pgTable(
       .onDelete('cascade'),
     foreignKey({
       columns: [table.userTypeId],
-      foreignColumns: [usertypes.userTypeId],
+      foreignColumns: [userTypes.userTypeId],
       name: 'users_user_type_id_fkey'
     })
       .onUpdate('cascade')

@@ -26,7 +26,7 @@ export default async function (
         avatarUrl: true
       },
       with: {
-        usertype: {
+        userType: {
           columns: { type: true }
         }
       },

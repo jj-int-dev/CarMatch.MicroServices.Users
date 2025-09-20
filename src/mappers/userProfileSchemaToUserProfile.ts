@@ -2,7 +2,7 @@ import type { UserProfile } from '../dtos/userProfile';
 import type { UserProfileSchema } from '../validators/database/userProfileValidator';
 
 export default function (userProfileSchema: UserProfileSchema): UserProfile {
-  const { email, displayName, phoneNumber, gender, bio, avatarUrl, usertype } =
+  const { email, displayName, phoneNumber, gender, bio, avatarUrl, userType } =
     userProfileSchema!;
   return {
     email,
@@ -11,6 +11,6 @@ export default function (userProfileSchema: UserProfileSchema): UserProfile {
     gender,
     bio,
     avatarUrl,
-    userType: usertype?.type ?? null
+    userType: userType?.type ?? null
   };
 }

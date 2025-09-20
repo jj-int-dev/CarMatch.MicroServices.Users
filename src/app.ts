@@ -17,7 +17,7 @@ const corsOptions: cors.CorsOptions = {
       callback(new Error('Request from unauthorized origin'));
     }
   },
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed HTTP methods
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'], // Allowed HTTP methods
   credentials: true // Allow sending cookies/authorization headers
 };
 

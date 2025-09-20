@@ -7,11 +7,7 @@ import type { Request, Response, NextFunction } from 'express';
  * @param next the function that releases control to the next middleware or route handler
  * @returns
  */
-export default async function (
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export default function (req: Request, res: Response, next: NextFunction) {
   const userId = req.params.userId;
 
   if (!userId || userId.trim().length === 0) {
