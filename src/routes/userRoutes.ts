@@ -51,7 +51,7 @@ const router = Router();
  */
 router.get(
   '/:userId/profile-picture',
-  /*isAuthorized,*/
+  isAuthorized,
   userIdValidator,
   async (req: Request, res: Response) => {
     try {
@@ -113,7 +113,7 @@ router.get(
  */
 router.get(
   '/:userId/profile',
-  /*isAuthorized,*/
+  isAuthorized,
   userIdValidator,
   async (req: Request, res: Response) => {
     try {
