@@ -126,7 +126,7 @@ router.get(
 );
 
 router.patch(
-  ':userId/profile',
+  '/:userId/profile',
   isAuthorized,
   userIdValidator,
   userCanMakeUserUpdatesValidator,
@@ -147,7 +147,7 @@ router.patch(
 );
 
 router.patch(
-  ':userId/user-type',
+  '/:userId/user-type',
   isAuthorized,
   userIdValidator,
   userCanMakeUserUpdatesValidator,
