@@ -8,7 +8,7 @@ export default async function (
 ) {
   try {
     const authHeader = req.headers['authorization'] ?? '';
-    const refreshToken = req.headers['refreshtoken'] ?? '';
+    const refreshToken = req.headers['refresh-token'] ?? '';
     const accessToken = authHeader.replace('Bearer ', '');
     let errorMsg: string | undefined = undefined;
 

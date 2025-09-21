@@ -4,11 +4,11 @@ export const userProfileValidator = z
   .object({
     email: z.email(),
     displayName: z.string().nullable(),
-    phoneNumber: z.string().nullable(),
-    gender: z.string().nullable(),
+    phoneNumber: z.e164().nullable(),
+    gender: z.literal(['Man', 'Woman', '']).nullable(),
     bio: z.string().nullable(),
     avatarUrl: z.string().nullable(),
-    userType: z.object({ type: z.string() }).optional()
+    userType: z.object({ type: z.string() }).nullable()
   })
   .optional();
 
