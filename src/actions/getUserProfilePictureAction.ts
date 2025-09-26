@@ -5,7 +5,7 @@ import HttpResponseError from '../dtos/httpResponseError';
  *
  * @param userId The ID of the user whose profile picture url should be fetched
  * @returns The profile picture url
- * @throws {Error} When a valid image url has not been returned from the database
+ * @throws {HttpResponseError} When a valid image url could not be fetched from the database
  */
 export default async function (userId: string): Promise<string> {
   console.log('Entering GetUserProfilePictureAction ...');
@@ -14,7 +14,7 @@ export default async function (userId: string): Promise<string> {
   if (success && data) {
     const { avatarUrl } = data;
     console.log(
-      `Successfully retrieved profile url for user with userId ${userId}: ${avatarUrl}` +
+      `Successfully retrieved profile picture url for user with userId ${userId}: ${avatarUrl}` +
         `\nExiting GetUserProfilePictureAction ...`
     );
     return avatarUrl;

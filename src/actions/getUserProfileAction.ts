@@ -7,7 +7,7 @@ import HttpResponseError from '../dtos/httpResponseError';
  *
  * @param userId The ID of the user whose profile picture should be fetched
  * @returns The profile data
- * @throws {Error} When no user data was returned from the database
+ * @throws {HttpResponseError} When no user data was returned from the database
  */
 export default async function (userId: string): Promise<UserProfile> {
   console.log('Entering GetUserProfileAction ...');

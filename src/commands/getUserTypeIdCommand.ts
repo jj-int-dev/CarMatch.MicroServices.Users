@@ -7,6 +7,11 @@ import {
 } from '../validators/database/userTypeIdValidator';
 import type { ZodSafeParseResult } from 'zod';
 
+/**
+ *
+ * @param userId The ID of the user whose user type ID should be fetched
+ * @returns The user type ID if it exists
+ */
 export default async function (
   userType: string
 ): Promise<ZodSafeParseResult<UserTypeIdSchema>> {

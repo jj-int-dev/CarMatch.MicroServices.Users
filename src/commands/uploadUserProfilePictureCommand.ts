@@ -5,6 +5,12 @@ import {
 import { supabase } from '../utils/supabaseClient';
 import type { ImageUploadResult } from '../dtos/imageUploadResult';
 
+/**
+ *
+ * @param userId The ID of the user whose profile picture should be updated
+ * @param profilePicture The image file to upload
+ * @returns The url of the uploaded profile picture or an error message if the upload failed
+ */
 export default async function (
   userId: string,
   profilePicture: Express.Multer.File

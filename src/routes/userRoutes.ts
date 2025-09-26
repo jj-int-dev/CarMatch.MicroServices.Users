@@ -13,6 +13,7 @@ import { userTypeValidator } from '../validators/requests/userTypeValidator';
 import updateUserProfileAction from '../actions/updateUserProfileAction';
 import updateUserTypeAction from '../actions/updateUserTypeAction';
 import getErrorResponseJson from '../utils/getErrorResponseJson';
+import getUserProfilePictureAndTypeAction from '../actions/getUserProfilePictureAndTypeAction';
 
 const router = Router();
 
@@ -57,6 +58,25 @@ router.get(
     try {
       const avatarUrl = await getUserProfilePictureAction(req.params.userId!);
       return res.status(200).json({ avatarUrl });
+    } catch (error) {
+      return getErrorResponseJson(error, res);
+    }
+  }
+);
+
+router.get(
+  '/:userId/profile-and-type',
+  isAuthorized,
+  userIdValidator,
+  async (req: Request, res: Response) => {
+    try {
+      const userPicAndUserType = await getUserProfilePictureAndTypeAction(
+        req.params.userId!
+      );
+      return res.status(200).json({
+        avatarUrl: userPicAndUserType.avatarUrl,
+        userType: userPicAndUserType.userType
+      });
     } catch (error) {
       return getErrorResponseJson(error, res);
     }
