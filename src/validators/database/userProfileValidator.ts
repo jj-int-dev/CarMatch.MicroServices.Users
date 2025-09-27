@@ -8,7 +8,7 @@ export const userProfileValidator = z
     gender: z.literal(['Man', 'Woman', '']).nullable(),
     bio: z.string().nullable(),
     avatarUrl: z.string().nullable(),
-    userType: z.object({ type: z.string() }).nullable()
+    userType: z.object({ type: z.literal(['Rehomer', 'Adopter']) }).nullable()
   })
   .optional();
 
