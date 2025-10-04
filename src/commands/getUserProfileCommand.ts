@@ -22,6 +22,7 @@ export default async function (
         displayName: true,
         phoneNumber: true,
         gender: true,
+        dateOfBirth: true,
         bio: true,
         avatarUrl: true
       },

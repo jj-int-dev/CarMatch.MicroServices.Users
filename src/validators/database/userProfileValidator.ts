@@ -8,7 +8,13 @@ export const userProfileValidator = z
     gender: z.literal(['Man', 'Woman', '']).nullable(),
     bio: z.string().nullable(),
     avatarUrl: z.string().nullable(),
-    userType: z.object({ type: z.literal(['Rehomer', 'Adopter']) }).nullable()
+    userType: z.object({ type: z.literal(['Rehomer', 'Adopter']) }).nullable(),
+    dateOfBirth: z.iso
+      .date()
+      .refine((date) => new Date(date) < new Date(), {
+        message: 'Date of birth must be before today'
+      })
+      .nullable()
   })
   .optional();
 

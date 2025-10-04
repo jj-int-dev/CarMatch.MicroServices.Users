@@ -254,7 +254,7 @@ CREATE TABLE "users" (
 	"phone_number" varchar(100),
 	"display_name" varchar(300),
 	"created_at" timestamp with time zone NOT NULL,
-	"date_of_birth" date NOT NULL,
+	"date_of_birth" date,
 	"avatarUrl" text,
 	"bio" text,
 	"user_type_id" integer,
