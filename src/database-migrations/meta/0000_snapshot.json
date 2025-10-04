@@ -2135,18 +2135,6 @@
       "name": "users",
       "schema": "",
       "columns": {
-        "online": {
-          "name": "online",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": true
-        },
-        "last_seen": {
-          "name": "last_seen",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
         "email": {
           "name": "email",
           "type": "varchar(100)",
@@ -2312,26 +2300,14 @@
           "primaryKey": true,
           "notNull": true
         },
-        "rehomer_last_opened_chat_at": {
-          "name": "rehomer_last_opened_chat_at",
+        "rehomer_last_active_at": {
+          "name": "rehomer_last_active_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": false
         },
-        "rehomer_last_closed_chat_at": {
-          "name": "rehomer_last_closed_chat_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "adopter_last_opened_chat_at": {
-          "name": "adopter_last_opened_chat_at",
-          "type": "timestamp with time zone",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "adopter_last_closed_chat_at": {
-          "name": "adopter_last_closed_chat_at",
+        "adopter_last_active_at": {
+          "name": "adopter_last_active_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": false
@@ -2342,8 +2318,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "last_message_sent_at": {
-          "name": "last_message_sent_at",
+        "last_message_at": {
+          "name": "last_message_at",
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": false

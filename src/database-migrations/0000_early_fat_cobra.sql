@@ -250,8 +250,6 @@ CREATE TABLE "usertypes" (
 );
 --> statement-breakpoint
 CREATE TABLE "users" (
-	"online" boolean NOT NULL,
-	"last_seen" timestamp with time zone,
 	"email" varchar(100) NOT NULL,
 	"phone_number" varchar(100),
 	"display_name" varchar(300),
@@ -274,12 +272,10 @@ CREATE TABLE "messages" (
 --> statement-breakpoint
 CREATE TABLE "conversations" (
 	"conversation_id" serial PRIMARY KEY NOT NULL,
-	"rehomer_last_opened_chat_at" timestamp with time zone,
-	"rehomer_last_closed_chat_at" timestamp with time zone,
-	"adopter_last_opened_chat_at" timestamp with time zone,
-	"adopter_last_closed_chat_at" timestamp with time zone,
+	"rehomer_last_active_at" timestamp with time zone,
+	"adopter_last_active_at" timestamp with time zone,
 	"created_at" timestamp with time zone NOT NULL,
-	"last_message_sent_at" timestamp with time zone,
+	"last_message_at" timestamp with time zone,
 	"adopter_id" uuid NOT NULL,
 	"rehomer_id" uuid NOT NULL
 );

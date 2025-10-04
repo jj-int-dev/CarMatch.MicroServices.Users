@@ -678,8 +678,6 @@ export const userTypes = pgTable('usertypes', {
 export const users = pgTable(
   'users',
   {
-    online: boolean().notNull(),
-    lastSeen: timestamp('last_seen', { withTimezone: true, mode: 'string' }),
     email: varchar({ length: 100 }).notNull(),
     phoneNumber: varchar('phone_number', { length: 100 }),
     displayName: varchar('display_name', { length: 300 }),
@@ -742,19 +740,11 @@ export const conversations = pgTable(
   'conversations',
   {
     conversationId: serial('conversation_id').primaryKey().notNull(),
-    rehomerLastOpenedChatAt: timestamp('rehomer_last_opened_chat_at', {
+    rehomerLastActiveAt: timestamp('rehomer_last_active_at', {
       withTimezone: true,
       mode: 'string'
     }),
-    rehomerLastClosedChatAt: timestamp('rehomer_last_closed_chat_at', {
-      withTimezone: true,
-      mode: 'string'
-    }),
-    adopterLastOpenedChatAt: timestamp('adopter_last_opened_chat_at', {
-      withTimezone: true,
-      mode: 'string'
-    }),
-    adopterLastClosedChatAt: timestamp('adopter_last_closed_chat_at', {
+    adopterLastActiveAt: timestamp('adopter_last_active_at', {
       withTimezone: true,
       mode: 'string'
     }),
@@ -762,7 +752,7 @@ export const conversations = pgTable(
       withTimezone: true,
       mode: 'string'
     }).notNull(),
-    lastMessageSentAt: timestamp('last_message_sent_at', {
+    lastMessageAt: timestamp('last_message_at', {
       withTimezone: true,
       mode: 'string'
     }),
