@@ -687,6 +687,7 @@ export const users = pgTable(
     }).notNull(),
     dateOfBirth: date('date_of_birth'),
     avatarUrl: text('avatar_url'),
+    firstLoginCompleted: boolean('first_login_completed'),
     bio: text(),
     userTypeId: integer('user_type_id'),
     gender: varchar(),

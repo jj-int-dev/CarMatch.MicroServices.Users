@@ -14,6 +14,8 @@ import updateUserProfileAction from '../actions/updateUserProfileAction';
 import updateUserTypeAction from '../actions/updateUserTypeAction';
 import getErrorResponseJson from '../utils/getErrorResponseJson';
 import getUserProfilePictureAndTypeAction from '../actions/getUserProfilePictureAndTypeAction';
+import { firstLoginCompletedValidator } from '../validators/requests/firstLoginCompletedValidator';
+import updateFirstLoginCompletedAction from '../actions/updateFirstLoginCompletedAction';
 
 const router = Router();
 
@@ -179,6 +181,25 @@ router.patch(
         req.body.userType as string
       );
       return res.status(200).json({ userType: updatedUserType });
+    } catch (error) {
+      return getErrorResponseJson(error, res);
+    }
+  }
+);
+
+router.put(
+  '/:userId/first-login-completed',
+  isAuthorized,
+  userIdValidator,
+  userCanMakeUserUpdatesValidator,
+  firstLoginCompletedValidator,
+  async (req: Request, res: Response) => {
+    try {
+      await updateFirstLoginCompletedAction(
+        req.params.userId!,
+        req.body.firstLoginCompleted as boolean
+      );
+      return res.sendStatus(200);
     } catch (error) {
       return getErrorResponseJson(error, res);
     }

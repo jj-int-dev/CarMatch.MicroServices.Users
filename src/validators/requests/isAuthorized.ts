@@ -15,7 +15,7 @@ export default async function (
     if (accessToken && refreshToken) {
       const userData = await supabase.auth.getUser(accessToken);
       if (!userData.error && userData.data?.user?.aud === 'authenticated') {
-        next();
+        return next();
       }
       errorMsg = `Unauthorized request:\nAccessToken=${accessToken}\nRefreshToken=${refreshToken}\nUser Data:\n${userData}`;
     }

@@ -28,14 +28,14 @@ export default async function (
 
   const numUpdatedRows = await updateUserTypeCommand(userId, userTypeId);
 
-  if (numUpdatedRows === 1) {
+  if (numUpdatedRows < 0) {
     console.log(
-      `Successfully updated the type of the user with userId ${userId} to ${userType}. Exiting UpdateUserTypeAction...`
+      `${numUpdatedRows} records updated, successfully set the type of the user with userId ${userId} to ${userType}. Exiting UpdateUserTypeAction...`
     );
     return userType;
   }
   console.error(
-    `Unexpected number of user rows updated with the userTypeId ${userTypeId}: ${numUpdatedRows} row(s)`
+    `Could not update the type of the user with userId of ${userId} to ${userType}: ${numUpdatedRows} record(s) updated`
   );
   throw new HttpResponseError(
     500,

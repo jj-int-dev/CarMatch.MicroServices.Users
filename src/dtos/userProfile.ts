@@ -6,5 +6,6 @@ export type UserProfile = {
   dateOfBirth: string | null;
   bio: string | null;
   avatarUrl: string | null;
+  firstLoginCompleted: boolean | null;
   userType: string | null;
 };

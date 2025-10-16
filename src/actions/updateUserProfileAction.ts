@@ -47,17 +47,17 @@ export default async function (
   );
 
   // return updated user profile data
-  if (numUpdatedRows === 1) {
+  if (numUpdatedRows < 0) {
     console.log(
-      `Successfully updated profile of user with userId ${userId}. Exiting UpdateUserProfileAction...`
+      `${numUpdatedRows} records updated, successfully updated profile of user with userId ${userId}. Exiting UpdateUserProfileAction...`
     );
     return await getUserProfileAction(userId);
   }
 
   console.error(
-    `Unexpected number of user rows updated with the provided profile data:` +
+    `Could not update the profile data of the user with userId ${userId} to the provided profile data:` +
       `\nProfile pic url: ${profilePicUrl}\nProfile data:\n${newProfileData}` +
-      `\nRows updated: ${numUpdatedRows}`
+      `\nRecords updated: ${numUpdatedRows}`
   );
   throw new HttpResponseError(
     500,
