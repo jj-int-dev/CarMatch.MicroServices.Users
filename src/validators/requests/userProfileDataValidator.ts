@@ -3,13 +3,13 @@ import * as z from 'zod';
 
 // we allow fields to be empty strings in case user wants to clear previously set values
 const userProfileDataValidations = z.object({
-  displayName: z.string().trim().max(60),
+  displayName: z.string().min(1, { message: 'Display name is required' }),
   phoneNumber: z.union([z.e164(), z.literal('')]), //empty string or E.164 format phone number
   gender: z.literal(['Man', 'Woman', '']),
   dateOfBirth: z.iso
     .date()
     .refine((date) => new Date(date) < new Date(), {
-      message: 'Date of birth must be before today'
+      message: 'Date of birth must be valid and before today'
     })
     .nullable(),
   bio: z.string().trim().max(300),
