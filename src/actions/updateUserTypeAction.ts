@@ -28,7 +28,7 @@ export default async function (
 
   const numUpdatedRows = await updateUserTypeCommand(userId, userTypeId);
 
-  if (numUpdatedRows < 0) {
+  if (numUpdatedRows > 0) {
     console.log(
       `${numUpdatedRows} records updated, successfully set the type of the user with userId ${userId} to ${userType}. Exiting UpdateUserTypeAction...`
     );

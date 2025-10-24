@@ -2,7 +2,10 @@ import * as z from 'zod';
 
 export const userProfilePictureUrlValidator = z
   .object({
-    avatarUrl: z.string().regex(/^https:\/\/.+/)
+    avatarUrl: z
+      .string()
+      .regex(/^https:\/\/.+/)
+      .nullable()
   })
   .optional();
 

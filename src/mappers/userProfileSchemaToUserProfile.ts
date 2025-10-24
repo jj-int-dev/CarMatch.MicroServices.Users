@@ -9,7 +9,6 @@ export default function (userProfileSchema: UserProfileSchema): UserProfile {
     gender,
     dateOfBirth,
     bio,
-    avatarUrl,
     firstLoginCompleted,
     userType
   } = userProfileSchema!;
@@ -20,7 +19,6 @@ export default function (userProfileSchema: UserProfileSchema): UserProfile {
     gender,
     dateOfBirth,
     bio,
-    avatarUrl,
     firstLoginCompleted,
     userType: userType?.type ?? null
   };

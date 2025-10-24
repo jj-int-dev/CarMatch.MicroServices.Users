@@ -23,8 +23,7 @@ export default async function (
         phoneNumber: true,
         gender: true,
         dateOfBirth: true,
-        bio: true,
-        avatarUrl: true
+        bio: true
       },
       with: {
         userType: {

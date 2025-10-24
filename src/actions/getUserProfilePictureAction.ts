@@ -7,7 +7,7 @@ import HttpResponseError from '../dtos/httpResponseError';
  * @returns The profile picture url
  * @throws {HttpResponseError} When a valid image url could not be fetched from the database
  */
-export default async function (userId: string): Promise<string> {
+export default async function (userId: string): Promise<string | null> {
   console.log('Entering GetUserProfilePictureAction ...');
   const { success, data, error } = await getUserProfilePictureCommand(userId);
 

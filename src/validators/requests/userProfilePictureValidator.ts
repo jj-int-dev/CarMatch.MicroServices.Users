@@ -6,7 +6,9 @@ import { MAX_FILE_SIZE_BYTES, ALLOWED_FILE_TYPES } from '../../utils/constants';
 const storage = multer.memoryStorage();
 
 const fileFilter: multer.Options['fileFilter'] = (_request, file, callback) => {
-  if (!ALLOWED_FILE_TYPES.hasOwnProperty(file.mimetype)) {
+  if (
+    !Object.prototype.hasOwnProperty.call(ALLOWED_FILE_TYPES, file.mimetype)
+  ) {
     return callback(
       new Error('Invalid file type. Only JPG, PNG, and WEBP are allowed.')
     );
@@ -38,7 +40,11 @@ export default function (req: Request, res: Response, next: NextFunction) {
       return res.status(400).json({ error: 'Invalid file' });
     }
 
-    // If no file uploaded, that's okay — just continue
+    // require a file
+    if (!req.file) {
+      return res.status(400).json({ error: 'File is required' });
+    }
+
     return next();
   });
 }

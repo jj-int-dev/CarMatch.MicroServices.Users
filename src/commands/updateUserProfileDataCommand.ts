@@ -7,13 +7,11 @@ import type { UserProfileDataSchema } from '../validators/requests/userProfileDa
  *
  * @param userId The ID of the user whose profile should be updated
  * @param profileData The data to update the user's profile with
- * @param profilePicUrl The url  of the user's updated profile picture
  * @returns The amount of rows in the database that were updated
  */
 export default async function (
   userId: string,
-  profileData: UserProfileDataSchema,
-  profilePicUrl?: string
+  profileData: UserProfileDataSchema
 ): Promise<number> {
   const affectedRows = await db
     .update(users)
@@ -22,7 +20,6 @@ export default async function (
       phoneNumber: profileData.phoneNumber,
       gender: profileData.gender,
       bio: profileData.bio,
-      ...(Boolean(profilePicUrl) && { avatarUrl: profilePicUrl }),
       ...(Boolean(profileData.userType) && { userType: profileData.userType })
     })
     .where(eq(users.userId, userId));

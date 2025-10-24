@@ -7,7 +7,6 @@ export const userProfileValidator = z
     phoneNumber: z.e164().nullable(),
     gender: z.literal(['Man', 'Woman', '']).nullable(),
     bio: z.string().nullable(),
-    avatarUrl: z.string().nullable(),
     firstLoginCompleted: z.boolean().nullable(),
     userType: z.object({ type: z.literal(['Rehomer', 'Adopter']) }).nullable(),
     dateOfBirth: z.iso

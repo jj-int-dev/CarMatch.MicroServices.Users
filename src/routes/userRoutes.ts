@@ -16,6 +16,8 @@ import getErrorResponseJson from '../utils/getErrorResponseJson';
 import getUserProfilePictureAndTypeAction from '../actions/getUserProfilePictureAndTypeAction';
 import { firstLoginCompletedValidator } from '../validators/requests/firstLoginCompletedValidator';
 import updateFirstLoginCompletedAction from '../actions/updateFirstLoginCompletedAction';
+import updateUserProfilePictureAction from '../actions/updateUserProfilePictureAction';
+import deleteUserProfilePictureAction from '../actions/deleteUserProfilePictureAction';
 
 const router = Router();
 
@@ -152,13 +154,11 @@ router.patch(
   isAuthorized,
   userIdValidator,
   userCanMakeUserUpdatesValidator,
-  userProfilePictureValidator,
   userProfileDataValidator,
   async (req: Request, res: Response) => {
     try {
       const updatedUserProfile = await updateUserProfileAction(
         req.params.id!,
-        req.file,
         req.body as UserProfileDataSchema
       );
       return res.status(200).json({ userProfile: updatedUserProfile });
@@ -187,7 +187,7 @@ router.patch(
   }
 );
 
-router.put(
+router.patch(
   '/:userId/first-login-completed',
   isAuthorized,
   userIdValidator,
@@ -199,7 +199,41 @@ router.put(
         req.params.userId!,
         req.body.firstLoginCompleted as boolean
       );
-      return res.sendStatus(200);
+      return res.sendStatus(204);
+    } catch (error) {
+      return getErrorResponseJson(error, res);
+    }
+  }
+);
+
+router.put(
+  '/:userId/profile-picture',
+  isAuthorized,
+  userIdValidator,
+  userCanMakeUserUpdatesValidator,
+  userProfilePictureValidator,
+  async (req: Request, res: Response) => {
+    try {
+      const updatedAvatarUrl = await updateUserProfilePictureAction(
+        req.params.userId!,
+        req.file!
+      );
+      return res.status(200).json({ avatarUrl: updatedAvatarUrl });
+    } catch (error) {
+      return getErrorResponseJson(error, res);
+    }
+  }
+);
+
+router.delete(
+  '/:userId/profile-picture',
+  isAuthorized,
+  userIdValidator,
+  userCanMakeUserUpdatesValidator,
+  async (req: Request, res: Response) => {
+    try {
+      await deleteUserProfilePictureAction(req.params.userId!);
+      return res.sendStatus(204);
     } catch (error) {
       return getErrorResponseJson(error, res);
     }
