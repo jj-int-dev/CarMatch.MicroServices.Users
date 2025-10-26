@@ -6,13 +6,13 @@ const userProfileDataValidations = z.object({
   displayName: z.string().min(1, { message: 'Display name is required' }),
   phoneNumber: z.union([z.e164(), z.literal('')]), //empty string or E.164 format phone number
   gender: z.literal(['Man', 'Woman', '']),
-  dateOfBirth: z.iso
-    .date()
-    .refine((date) => new Date(date) < new Date(), {
+  dateOfBirth: z.union([
+    z.literal(''),
+    z.iso.date().refine((date) => new Date(date) < new Date(), {
       message: 'Date of birth must be valid and before today'
     })
-    .nullable(),
-  bio: z.string().trim().max(300),
+  ]),
+  bio: z.string(),
   userType: z.literal(['Rehomer', 'Adopter']).optional()
 });
 
