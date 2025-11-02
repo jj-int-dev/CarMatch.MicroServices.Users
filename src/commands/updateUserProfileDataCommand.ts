@@ -13,15 +13,19 @@ export default async function (
   userId: string,
   profileData: UserProfileDataSchema
 ): Promise<number> {
-  const affectedRows = await db
+  const updatedRows = await db
     .update(users)
     .set({
       displayName: profileData.displayName,
       phoneNumber: profileData.phoneNumber,
       gender: profileData.gender,
       bio: profileData.bio,
+      dateOfBirth: profileData.dateOfBirth,
       ...(Boolean(profileData.userType) && { userType: profileData.userType })
     })
-    .where(eq(users.userId, userId));
-  return affectedRows.length;
+    .where(eq(users.userId, userId))
+    .returning();
+
+  // Return the number of updated rows
+  return updatedRows.length;
 }

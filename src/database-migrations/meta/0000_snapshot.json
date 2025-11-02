@@ -2165,12 +2165,6 @@
           "primaryKey": false,
           "notNull": false
         },
-        "first_login_completed": {
-          "name": "first_login_completed",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": false
-        },
         "avatar_url": {
           "name": "avatar_url",
           "type": "text",

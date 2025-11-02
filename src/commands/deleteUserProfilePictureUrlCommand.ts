@@ -8,11 +8,12 @@ import { eq } from 'drizzle-orm';
  * @returns The amount of rows in the database that were affected
  */
 export default async function (userId: string): Promise<number> {
-  const affectedRows = await db
+  const updatedRows = await db
     .update(users)
     .set({
       avatarUrl: null
     })
-    .where(eq(users.userId, userId));
-  return affectedRows.length;
+    .where(eq(users.userId, userId))
+    .returning();
+  return updatedRows.length;
 }

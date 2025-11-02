@@ -256,7 +256,6 @@ CREATE TABLE "users" (
 	"created_at" timestamp with time zone NOT NULL,
 	"date_of_birth" date,
 	"avatar_url" text,
-	"first_login_completed" boolean,
 	"bio" text,
 	"user_type_id" integer,
 	"gender" varchar,

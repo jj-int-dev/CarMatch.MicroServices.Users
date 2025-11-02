@@ -12,9 +12,10 @@ export default async function (
   userId: string,
   userTypeId: number
 ): Promise<number> {
-  const affectedRows = await db
+  const updatedRows = await db
     .update(users)
     .set({ userTypeId })
-    .where(eq(users.userId, userId));
-  return affectedRows.length;
+    .where(eq(users.userId, userId))
+    .returning();
+  return updatedRows.length;
 }
