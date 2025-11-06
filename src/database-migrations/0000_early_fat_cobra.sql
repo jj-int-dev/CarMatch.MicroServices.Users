@@ -296,8 +296,8 @@ CREATE TABLE "swipes" (
 --> statement-breakpoint
 CREATE TABLE "user_search_preferences" (
 	"user_search_preference_id" serial PRIMARY KEY NOT NULL,
-	"breed" varchar(300),
 	"age_in_weeks" real,
+	"neutered" boolean,
 	"gender" varchar(50),
 	"max_distance_km" integer,
 	"user_id" uuid DEFAULT gen_random_uuid() NOT NULL,
@@ -323,10 +323,9 @@ CREATE TABLE "animals_adopted" (
 CREATE TABLE "animals" (
 	"animal_id" serial PRIMARY KEY NOT NULL,
 	"name" varchar(200) NOT NULL,
-	"breed" varchar(300) NOT NULL,
 	"gender" varchar(50) NOT NULL,
 	"age_in_weeks" real NOT NULL,
-	"color" varchar(200) NOT NULL,
+	"neutered" boolean,
 	"address_display_name" text NOT NULL,
 	"description" text,
 	"rehomer_number" varchar(100),

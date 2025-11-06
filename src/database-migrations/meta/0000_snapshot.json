@@ -2492,12 +2492,6 @@
           "primaryKey": true,
           "notNull": true
         },
-        "breed": {
-          "name": "breed",
-          "type": "varchar(300)",
-          "primaryKey": false,
-          "notNull": false
-        },
         "age_in_weeks": {
           "name": "age_in_weeks",
           "type": "real",
@@ -2507,6 +2501,12 @@
         "gender": {
           "name": "gender",
           "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "neutered": {
+          "name": "neutered",
+          "type": "boolean",
           "primaryKey": false,
           "notNull": false
         },
@@ -2695,12 +2695,6 @@
           "primaryKey": false,
           "notNull": true
         },
-        "breed": {
-          "name": "breed",
-          "type": "varchar(300)",
-          "primaryKey": false,
-          "notNull": true
-        },
         "gender": {
           "name": "gender",
           "type": "varchar(50)",
@@ -2713,11 +2707,11 @@
           "primaryKey": false,
           "notNull": true
         },
-        "color": {
-          "name": "color",
-          "type": "varchar(200)",
+        "neutered": {
+          "name": "neutered",
+          "type": "boolean",
           "primaryKey": false,
-          "notNull": true
+          "notNull": false
         },
         "address_display_name": {
           "name": "address_display_name",

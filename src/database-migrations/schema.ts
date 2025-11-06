@@ -826,8 +826,8 @@ export const userSearchPreferences = pgTable(
     userSearchPreferenceId: serial('user_search_preference_id')
       .primaryKey()
       .notNull(),
-    breed: varchar({ length: 300 }),
     ageInWeeks: real('age_in_weeks'),
+    neutered: boolean(),
     gender: varchar({ length: 50 }),
     maxDistanceKm: integer('max_distance_km'),
     userId: uuid('user_id').defaultRandom().notNull()
@@ -904,10 +904,9 @@ export const animals = pgTable(
   {
     animalId: serial('animal_id').primaryKey().notNull(),
     name: varchar({ length: 200 }).notNull(),
-    breed: varchar({ length: 300 }).notNull(),
     gender: varchar({ length: 50 }).notNull(),
     ageInWeeks: real('age_in_weeks').notNull(),
-    color: varchar({ length: 200 }).notNull(),
+    neutered: boolean(),
     addressDisplayName: text('address_display_name').notNull(),
     description: text(),
     rehomerNumber: varchar('rehomer_number', { length: 100 }),
