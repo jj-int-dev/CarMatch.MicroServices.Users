@@ -296,7 +296,8 @@ CREATE TABLE "swipes" (
 --> statement-breakpoint
 CREATE TABLE "user_search_preferences" (
 	"user_search_preference_id" serial PRIMARY KEY NOT NULL,
-	"age_in_weeks" real,
+	"min_age_months" real,
+	"max_age_months" real,
 	"neutered" boolean,
 	"gender" varchar(50),
 	"max_distance_km" integer,
@@ -328,12 +329,8 @@ CREATE TABLE "animals" (
 	"neutered" boolean,
 	"address_display_name" text NOT NULL,
 	"description" text,
-	"rehomer_number" varchar(100),
-	"rehomer_email" varchar(300),
 	"created_at" timestamp with time zone NOT NULL,
 	"last_updated_at" timestamp with time zone,
-	"show_rehomer_number" boolean DEFAULT false,
-	"show_rehomer_email" boolean DEFAULT false,
 	"address_latitude" numeric(8, 6) NOT NULL,
 	"address_longitude" numeric(9, 6) NOT NULL,
 	"rehomer_id" uuid NOT NULL

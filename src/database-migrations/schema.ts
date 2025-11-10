@@ -826,7 +826,8 @@ export const userSearchPreferences = pgTable(
     userSearchPreferenceId: serial('user_search_preference_id')
       .primaryKey()
       .notNull(),
-    ageInWeeks: real('age_in_weeks'),
+    minAgeMonths: real('min_age_months'),
+    maxAgeMonths: real('max_age_months'),
     neutered: boolean(),
     gender: varchar({ length: 50 }),
     maxDistanceKm: integer('max_distance_km'),
@@ -909,8 +910,6 @@ export const animals = pgTable(
     neutered: boolean(),
     addressDisplayName: text('address_display_name').notNull(),
     description: text(),
-    rehomerNumber: varchar('rehomer_number', { length: 100 }),
-    rehomerEmail: varchar('rehomer_email', { length: 300 }),
     createdAt: timestamp('created_at', {
       withTimezone: true,
       mode: 'string'
@@ -919,8 +918,6 @@ export const animals = pgTable(
       withTimezone: true,
       mode: 'string'
     }),
-    showRehomerNumber: boolean('show_rehomer_number').default(false),
-    showRehomerEmail: boolean('show_rehomer_email').default(false),
     addressLatitude: numeric('address_latitude', {
       precision: 8,
       scale: 6

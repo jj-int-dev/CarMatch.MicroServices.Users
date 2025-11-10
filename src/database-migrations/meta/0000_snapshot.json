@@ -2492,8 +2492,14 @@
           "primaryKey": true,
           "notNull": true
         },
-        "age_in_weeks": {
-          "name": "age_in_weeks",
+        "min_age_months": {
+          "name": "min_age_months",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "max_age_months": {
+          "name": "max_age_months",
           "type": "real",
           "primaryKey": false,
           "notNull": false
@@ -2725,18 +2731,6 @@
           "primaryKey": false,
           "notNull": false
         },
-        "rehomer_number": {
-          "name": "rehomer_number",
-          "type": "varchar(100)",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "rehomer_email": {
-          "name": "rehomer_email",
-          "type": "varchar(300)",
-          "primaryKey": false,
-          "notNull": false
-        },
         "created_at": {
           "name": "created_at",
           "type": "timestamp with time zone",
@@ -2748,20 +2742,6 @@
           "type": "timestamp with time zone",
           "primaryKey": false,
           "notNull": false
-        },
-        "show_rehomer_number": {
-          "name": "show_rehomer_number",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": false,
-          "default": false
-        },
-        "show_rehomer_email": {
-          "name": "show_rehomer_email",
-          "type": "boolean",
-          "primaryKey": false,
-          "notNull": false,
-          "default": false
         },
         "address_latitude": {
           "name": "address_latitude",
