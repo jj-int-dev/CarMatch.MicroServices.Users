@@ -16,6 +16,12 @@ import getErrorResponseJson from '../utils/getErrorResponseJson';
 import getUserProfilePictureAndTypeAction from '../actions/getUserProfilePictureAndTypeAction';
 import updateUserProfilePictureAction from '../actions/updateUserProfilePictureAction';
 import deleteUserProfilePictureAction from '../actions/deleteUserProfilePictureAction';
+import updateDiscoveryPreferencesAction from '../actions/updateDiscoveryPreferencesAction';
+import {
+  discoveryPreferencesValidator,
+  type DiscoveryPreferencesSchema
+} from '../validators/requests/discoveryPreferencesValidator';
+import getDiscoveryPreferencesAction from '../actions/getDiscoveryPreferencesAction';
 
 const router = Router();
 
@@ -213,6 +219,41 @@ router.delete(
     try {
       await deleteUserProfilePictureAction(req.params.userId!);
       return res.sendStatus(204);
+    } catch (error) {
+      return getErrorResponseJson(error, res);
+    }
+  }
+);
+
+router.put(
+  '/:userId/discovery-preferences',
+  isAuthorized,
+  userIdValidator,
+  userCanMakeUserUpdatesValidator,
+  discoveryPreferencesValidator,
+  async (req: Request, res: Response) => {
+    try {
+      await updateDiscoveryPreferencesAction(
+        req.params.userId!,
+        req.body as DiscoveryPreferencesSchema
+      );
+      return res.sendStatus(200);
+    } catch (error) {
+      return getErrorResponseJson(error, res);
+    }
+  }
+);
+
+router.get(
+  '/:userId/discovery-preferences',
+  isAuthorized,
+  userIdValidator,
+  async (req: Request, res: Response) => {
+    try {
+      const discoveryPreferences = await getDiscoveryPreferencesAction(
+        req.params.userId!
+      );
+      return res.status(200).json({ discoveryPreferences });
     } catch (error) {
       return getErrorResponseJson(error, res);
     }
